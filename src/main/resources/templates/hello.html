@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot and Thymeleaf example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h3>Spring Boot with Thymeleaf</h3>
+<p th:text="${hello}">默认hello</p>
+<table border="1">
+    <tr>
+        <td>gameId</td>
+        <td>openId</td>
+        <td>recordTime</td>
+    </tr>
+    <tr th:each="bonus:${list}">
+        <td th:text="${bonus.gameId}">999</td>
+        <td th:text="${bonus.openId}">openId</td>
+        <td th:text="${bonus.recordTime}">0</td>
+    </tr>
+</table>
+</body>
+</html>

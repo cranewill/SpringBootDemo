@@ -1,0 +1,68 @@
+######################### 服务器配置（war包不需要配置）
+server:
+  port: 8088
+
+spring:
+  data:
+######################### Mongodb
+    mongodb:
+      uri: mongodb://192.168.16.90:27017/mini_friend
+      option:
+        max-connection-per-host: 2000
+        threads-allowed-to-block-for-connection-multiplier: 5
+        max-wait-time: 60000
+        socket-timeout: 0
+        max-connection-life-time: 0
+        max-connection-idle-time: 1500
+        connect-timeout: 10000
+######################### Redis
+  redis:
+    database: 0
+    host: 192.168.16.90
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+######################### MySQL
+  datasource:
+    url: jdbc:mysql://192.168.16.90:3306/mini_record?autoReconnect=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: game
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    testWhileIdle: true
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,log4j2
+    # 慢查询阈值
+    connectionProperties: druid.stat.mergeSql:true;druid.stat.slowSqlMillis:5000
+
+mybatis:
+  # MyBatis注解形式扫描实体类路径
+  type-aliases-package: com.tsuru.springboot_demo.bean.mybatis
+  # MyBatis XML形式配置文件路径
+  mapper-locations: classpath:mapper/*.xml
+
+######################### 日志
+logging:
+  level:
+    root: INFO
+#    file: crane.log
+
+######################### 自定义配置
+global:
+  url: http://localhost:8080/MiniFriend/data/setAccountLogin.action?gameId:%s&openId:%s
