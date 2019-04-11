@@ -2,12 +2,12 @@ package com.tsuru.springboot_demo.utils;
 
 import java.security.MessageDigest;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Log4j2
 public class MD5Util {
-
-	protected static Logger log = LogManager.getLogger(MD5Util.class);
 
 	public static String encode(String value) {
 		try {

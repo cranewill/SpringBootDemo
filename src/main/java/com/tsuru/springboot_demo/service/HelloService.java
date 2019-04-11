@@ -62,6 +62,36 @@ public class HelloService {
 		return sdao.selectText("test", "1");
 	}
 
+	/**
+	 * mybatis批量插入
+	 */
+	public void mybatisBatchInsert() {
+		List<ServiceWelcomeBean> list = new ArrayList<>();
+		for (int i = 0; i < 100; i++) {
+			ServiceWelcomeBean bean = new ServiceWelcomeBean();
+			bean.setOriginId("id" + i);
+			bean.setText("text" + i);
+			bean.setMediaId("media" + i);
+			list.add(bean);
+		}
+		sdao.batchInsert(list);
+	}
+
+	/**
+	 * mybatis批量合并更新
+	 */
+	public void mybatisBatchMerge() {
+		List<ServiceWelcomeBean> list = new ArrayList<>();
+		for (int i = 0; i < 100; i++) {
+			ServiceWelcomeBean bean = new ServiceWelcomeBean();
+			bean.setOriginId("id" + i);
+			bean.setText("text" + i);
+			bean.setMediaId("media" + i);
+			list.add(bean);
+		}
+		sdao.batchMerge(list);
+	}
+
 	public void redisTestSet() {
 		rdao.set("test", new RedisTestBean("haha", 1, 2L));
 	}

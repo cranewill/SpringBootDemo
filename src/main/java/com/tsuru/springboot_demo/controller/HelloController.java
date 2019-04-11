@@ -133,31 +133,56 @@ public class HelloController {
 		return result;
 	}
 
-    /**
-     * 用于测试redis
-     * @return
-     */
-    @RequestMapping(value = "redisSet", method = RequestMethod.GET)
-    public HashMap<String, Object> redisSet() {
-        HashMap<String, Object> result = new HashMap<>();
-        try {
-            service.redisTestSet();
-            result.put("result", 0);
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return result;
-    }
+	@RequestMapping(value = "mbBatchInsert", method = RequestMethod.GET)
+	public HashMap<String, Object> mybatisBatchInsert() {
+		HashMap<String, Object> result = new HashMap<>();
+		try {
+			service.mybatisBatchInsert();
+			result.put("result", 0);
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return result;
+	}
 
-    @RequestMapping(value = "redisGet", method = RequestMethod.GET)
-    public HashMap<String, Object> redisGet() {
-        HashMap<String, Object> result = new HashMap<>();
-        try {
-            result.put("result", service.redisTestGet());
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return result;
-    }
+	@RequestMapping(value = "mbBatchMerge", method = RequestMethod.GET)
+	public HashMap<String, Object> mybatisBatchMerge() {
+		HashMap<String, Object> result = new HashMap<>();
+		try {
+			service.mybatisBatchMerge();
+			result.put("result", 0);
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return result;
+	}
+
+	/**
+	 * 用于测试redis
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "redisSet", method = RequestMethod.GET)
+	public HashMap<String, Object> redisSet() {
+		HashMap<String, Object> result = new HashMap<>();
+		try {
+			service.redisTestSet();
+			result.put("result", 0);
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return result;
+	}
+
+	@RequestMapping(value = "redisGet", method = RequestMethod.GET)
+	public HashMap<String, Object> redisGet() {
+		HashMap<String, Object> result = new HashMap<>();
+		try {
+			result.put("result", service.redisTestGet());
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return result;
+	}
 
 }
